@@ -1,43 +1,41 @@
 <template>
-  <b-row class="size  mx-auto my-auto poke-row">
-     <div 
-            style="position: relative; overflow-y: auto; height: 700px"
-            data-offset="0"
-          >
-    <b-col cols="12" class="text-capitalize text-center "  >
-      <b-table
-        responsive="md"
-        :items="pokemonList"
-        hover
-        class="table-img"
-        :fields="fields"
-        @row-clicked="viewPokemonDetail"
-      >
-        <template #cell(imagen)="data">
-          <img :src="data.item.imagen" class="img-poke" />
-        </template>
-        <template #cell(tipo)="data"  >
-          <b-list-group class="align-items-center">
-          <p
-            v-for="(type, index) in data.item.tipo"
-            :key="index"
-            class="badge rounded-pill w-75"
-            :class="type"
-          >
-            {{ type }}
-          </p>
-          </b-list-group>
-        </template>
-        <template #cell(peso)="data"> {{ data.item.peso }} kg </template>
-      </b-table>
-    </b-col>
-     </div>
+  <b-row class="size mt-3 mx-auto my-auto poke-row">
+    <div
+      style="position: relative; overflow-y: auto; height: 700px"
+      data-offset="0"
+    ><p class="h4 mt-3 text-center">Lista de Pokemones</p>
+      <b-col cols="12" class="text-capitalize text-center">
+        <b-table
+          responsive="md"
+          :items="pokemonList"
+          hover
+          class="table-img"
+          :fields="fields"
+          @row-clicked="viewPokemonDetail"
+        >
+          <template #cell(imagen)="data">
+            <img :src="data.item.imagen" class="img-poke" />
+          </template>
+          <template #cell(tipo)="data">
+            <b-list-group class="align-items-center">
+              <p
+                v-for="(type, index) in data.item.tipo"
+                :key="index"
+                class="badge rounded-pill w-75"
+                :class="type"
+              >
+                {{ type }}
+              </p>
+            </b-list-group>
+          </template>
+          <template #cell(peso)="data"> {{ data.item.peso }} kg </template>
+        </b-table>
+      </b-col>
+    </div>
   </b-row>
- 
 </template>
 
 <script>
-
 import { http } from "@/utils/axios";
 
 export default {
@@ -97,16 +95,16 @@ export default {
 <style >
 @import "@/compents/typeColours.css";
 @import "@/compents/viewsimilcard.css";
+@import "@/compents/scrollbar.css";
 .img-poke {
   width: 100%;
   max-width: 80px;
 }
-.size{
-  width:100%;
+.size {
+  width: 100%;
   max-width: 700px;
 }
-.color-txt{
-    color:rgb(0, 0, 0);
+.color-txt {
+  color: rgb(0, 0, 0);
 }
-
 </style>

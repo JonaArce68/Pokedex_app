@@ -198,6 +198,7 @@ export default {
 <style>
 @import "@/compents/typeColours.css";
 @import "@/compents/viewsimilcard.css";
+@import "@/compents/scrollbar.css";
 .img-pokemon {
   max-width: 180px;
 }

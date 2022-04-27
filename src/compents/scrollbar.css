@@ -1,0 +1,12 @@
+::-webkit-scrollbar {
+    width: 20px;
+    border-radius: 15px;
+    background-color: #4b4b4b27;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: url('../assets/pokebola.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    size: 12px;
+  }
