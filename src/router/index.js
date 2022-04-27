@@ -11,12 +11,12 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/pokemon_cards/:id',
-    name: 'pokemon_cards',
+    path: '/pokemon/:id',
+    name: 'pokemon',
     // route level code-splitting
     // this generates a separate chunk (pokemon_cards.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "pokemon_cards" */ '../views/Pokemon_Cards.vue')
+    component: () => import(/* webpackChunkName: "pokemon_cards" */ '@/views/Pokemon.vue')
   }
 ]
 

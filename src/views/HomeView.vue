@@ -1,73 +1,112 @@
 <template>
-  <b-container >
-    <b-row>
-      <b-col  md-12>
-        <b-container fluid>
-        <b-table  hover :items="pokemonList" >
-          <template #cell(imagen)="data">
-               <a href="/pokemon_cards/:id">
-               <b-card-img :src="data.item.imagen" class="img-fluid" style="height:100px;width:100px" alt=""></b-card-img>
-            </a>
-          </template>
-          <template #cell(tipo)="data">
-              <p v-for="(type, index) in data.item.tipo" :key="index" class="badge bg-secondary">{{ type }}</p>
-          </template>
-        </b-table>
-        </b-container>
-      </b-col>
-    </b-row>
-  </b-container>
+  <b-row class="size  mx-auto my-auto poke-row">
+     <div 
+            style="position: relative; overflow-y: auto; height: 700px"
+            data-offset="0"
+          >
+    <b-col cols="12" class="text-capitalize text-center "  >
+      <b-table
+        responsive="md"
+        :items="pokemonList"
+        hover
+        class="table-img"
+        :fields="fields"
+        @row-clicked="viewPokemonDetail"
+      >
+        <template #cell(imagen)="data">
+          <img :src="data.item.imagen" class="img-poke" />
+        </template>
+        <template #cell(tipo)="data"  >
+          <b-list-group class="align-items-center">
+          <p
+            v-for="(type, index) in data.item.tipo"
+            :key="index"
+            class="badge rounded-pill w-75"
+            :class="type"
+          >
+            {{ type }}
+          </p>
+          </b-list-group>
+        </template>
+        <template #cell(peso)="data"> {{ data.item.peso }} kg </template>
+      </b-table>
+    </b-col>
+     </div>
+  </b-row>
+ 
 </template>
 
 <script>
 
-// @ is an alias to /src
-//import HelloWorld from '@/components/HelloWorld.vue'
-
 import { http } from "@/utils/axios";
 
 export default {
-  name:'Home',
+  name: "Home",
 
-  data(){
-    return{
-      pokemonList:{},
-      pokemonData:{},
+  data() {
+    return {
+      pokemonList: [],
+      fields: ["imagen", "nombre", "tipo", "peso"],
     };
   },
   methods: {
+    // testColor(color, compareColor) {
+    //   return color === compareColor;
+    // },
     async getItems() {
       try {
-        const response = await http.get("/pokemon/"); //digo que espere hasta que se se carguen los elementos 15 elementos de la api
-        const pokemonRawList = response.data.results; //carga los  resultados a la lista pokemonRawList
-        const fullList = await Promise.all(   // espera a que todos las promesas se carguen para poder seguir
+        const response = await http.get("/pokemon?limit=30");
+
+        const pokemonRawList = response.data.results;
+
+        const fullList = await Promise.all(
           pokemonRawList.map((pokemonInfo) => {
             return http.get(`/pokemon/${pokemonInfo.name}`);
           })
         );
+
         this.pokemonList = fullList
           .map((el) => el.data)
           .map((el) => ({
+            id: el.id,
             imagen: el.sprites.other.dream_world.front_default,
             nombre: el.name,
             tipo: el.types.map((type) => type.type.name),
-            peso:el.weight
+            peso: el.weight,
           }));
       } catch (error) {
         console.log(error);
       }
     },
+    viewPokemonDetail(row) {
+      this.$router.push({
+        name: "pokemon",
+        params: {
+          id: row.id,
+        },
+      });
+    },
   },
+
   created() {
     this.getItems();
   },
 };
 </script>
 
-<style>
-.testmode{
-    display: flex;
-    overflow-y: auto;
+<style >
+@import "@/compents/typeColours.css";
+@import "@/compents/viewsimilcard.css";
+.img-poke {
+  width: 100%;
+  max-width: 80px;
 }
-</style>>
+.size{
+  width:100%;
+  max-width: 700px;
+}
+.color-txt{
+    color:rgb(0, 0, 0);
+}
 
+</style>
