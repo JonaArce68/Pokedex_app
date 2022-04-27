@@ -1,3 +1,5 @@
-web: npm run serve
+web:node src/server.js
+web: npm run start
+
 
 
