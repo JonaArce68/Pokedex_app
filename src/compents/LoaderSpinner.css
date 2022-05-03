@@ -1,0 +1,6 @@
+.spinerPokeball{
+    width: 100%;
+    max-width: 200px;
+    animation: load 2s infinite;
+    opacity: 80%;
+  }
