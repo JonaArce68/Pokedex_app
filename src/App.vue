@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="paginaprincipal">
     <b-container fluid>
       <b-row>
         <b-navbar-brand class="bg-danger" toggleable="sm">
@@ -14,6 +14,7 @@
       </b-row>
       <router-view />
     </b-container>
+   
   </div>
 </template>
 

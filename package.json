@@ -42,10 +42,10 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JonaArce68/Pokedex_app.git"
+    "url": "git+https://github.com/JonaArce68/pokemon_challenge.git"
   },
   "bugs": {
-    "url": "https://github.com/JonaArce68/Pokedex_app/issues"
+    "url": "https://github.com/JonaArce68/pokemon_challenge/issues"
   },
-  "homepage": "https://github.com/JonaArce68/Pokedex_app#readme"
+  "homepage": "https://github.com/JonaArce68/pokemon_challenge#readme"
 }
