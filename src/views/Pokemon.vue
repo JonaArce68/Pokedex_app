@@ -158,7 +158,7 @@ export default {
           };
         });
       } catch (error) {
-        console.log("Error: ", error);
+        console.log("Error info: ", error);
       }
     },
     async makeTypes(types) {
