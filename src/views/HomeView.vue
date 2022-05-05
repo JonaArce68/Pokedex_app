@@ -20,7 +20,6 @@
               responsive="md"
               :items="pokemonList"
               hover
-              class="table-img"
               :fields="fields"
               @row-clicked="viewPokemonDetail"
             >

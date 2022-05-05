@@ -200,7 +200,7 @@ export default {
     this.loading = !false;
     setTimeout(() => {
       this.loading = !true;
-    }, 2000);
+    }, 2500);
     try {
       const [pokemonResp, characteristicResp] = await Promise.all([
         http.get(`/pokemon/${this.$route.params.id}`),

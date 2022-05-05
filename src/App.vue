@@ -14,7 +14,6 @@
       </b-row>
       <router-view />
     </b-container>
-   
   </div>
 </template>
 
@@ -26,10 +25,9 @@
   max-width: 80px;
 }
 
-@keyframes load{
-  50%{
-    transform: scale(0.7)
+@keyframes load {
+  50% {
+    transform: scale(0.7);
   }
 }
-
 </style>
