@@ -197,10 +197,7 @@ export default {
     },
   },
   async created() {
-    this.loading = !false;
-    setTimeout(() => {
-      this.loading = !true;
-    }, 2500);
+    this.loading = true;
     try {
       const [pokemonResp, characteristicResp] = await Promise.all([
         http.get(`/pokemon/${this.$route.params.id}`),
@@ -227,7 +224,10 @@ export default {
           (desc) => desc.language.name === "es"
         ).description,
       };
+
+      this.loading = false;
     } catch (error) {
+      this.loading = false;
       console.log(error);
     }
   },

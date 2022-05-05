@@ -65,10 +65,7 @@ export default {
     //   return color === compareColor;
     // },
     async getItems() {
-      this.loading = !false;
-      setTimeout(() => {
-        this.loading = !true;
-      }, 2000);
+      this.loading = true;
       try {
         const response = await http.get("/pokemon?limit=30");
 
@@ -89,7 +86,10 @@ export default {
             tipo: el.types.map((type) => type.type.name),
             peso: el.weight,
           }));
+
+        this.loading = false;
       } catch (error) {
+        this.loading = false;
         console.log(error);
       }
     },
